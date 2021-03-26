@@ -46,8 +46,8 @@ function generateMarkdown(data) {
   
 
   ## Deployment
-  - ${data.deploymentLink}
-  - ${data.repoLink}
+  - [Deployed site](${data.deploymentLink})
+  - [GitHub Repo](${data.repoLink})
   
   ## License 
   ${renderLicenseSection(data.license)}
