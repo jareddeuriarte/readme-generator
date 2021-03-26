@@ -80,7 +80,7 @@ const questions = [
         type: "list",
         message: "Which license would you like to use?",
         name: "license",
-        choices: ["MIT", "Apache License 2.0", "Artistic license 2.0", "GNU General Public License v2.0", "Mozilla Public License 2.0", "None"]
+        choices: ["MIT", "Apache License 2.0", "Artistic License 2.0", "GNU General Public License v2.0", "Mozilla Public License 2.0", "None"]
     },
     {
         type: "input",
@@ -102,6 +102,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then(response => {
+            console.log(response)
             writeToFile("README.md", generateMarkdown(response))
         })
 }

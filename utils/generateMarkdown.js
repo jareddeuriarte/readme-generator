@@ -1,52 +1,57 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-
-// If there is no license, return an empty string
 function renderLicenseBadge(license) {
   console.log(license)
-  if (license !== 'None') {
-    // var replaceLicense = license.join('%20'); 
-    return `[![${license}](https://img.shields.io/badge/${license}-green.svg)]`
+  if (license == 'MIT') {
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
   }
+  else if (license == 'Apache License 2.0') {
+    return `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+  }
+  else if (license == 'Artistic License 2.0') {
+    return `[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)`
+  }
+  else if (license == 'GNU General Public License v2.0') {
+    return `[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)`
+  }
+  else if (license == 'Mozilla Public License 2.0') {
+    return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
+  }
+  else ( license == "None");
   return " ";
 }
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) { }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license !== 'None') {
-    return `This project is licensed under ${license} .`;
+    return `This project is licensed under ${license}.`;
   }
   return '';
 }
 
-
-
-// TODO: Create a function to generate markdown for README
+// Creates the README
 function generateMarkdown(data) {
   return `# ${data.title}
 
   ## Description
-  $ ${data.description}
+  ${data.description}
 
 
   ## Table of Contents
-  - Description
-  - Deployment
-  - Installation
-  - Usage
-  - Features
-  - Credits
-  - Contributing
-  - License
+  - [Description](#Description)
+  - [Deployment](#Deployment)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Features](#Features)
+  - [Credits](#Credits)
+  - [Contributing](#Contributing)
+  - [License](#License)
   
 
   ## Deployment
-  - $ ${data.deploymentLink}
-  - $ ${data.repoLink}
+  - ${data.deploymentLink}
+  - ${data.repoLink}
   
+  ## License 
+  ${renderLicenseSection(data.license)}
+
   ![screenshot1](${data.relativePath1})
   ![screenshot2](${data.relativePath2})
   
@@ -55,7 +60,6 @@ function generateMarkdown(data) {
 
   ## Usage
   ${data.usage}
-
 
   ## Features
   - ${data.feature1}
@@ -68,17 +72,17 @@ function generateMarkdown(data) {
   ${data.credits}
 
   ## Contributing
-  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
   Forks are welcome!
 
-  ## License
-  ${renderLicenseSection(data.license)}
+  ## Badges
   ${renderLicenseBadge(data.license)}
+  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
+
   
   ## Questions
   Reach me at:
-  [GitHub](https://github.com/${data.gitHubProfile})
-  Email: deuriartejared@gmail.com
+  - [GitHub](https://github.com/${data.gitHubProfile})
+  - deuriartejared@gmail.com
 
 `;
 }
